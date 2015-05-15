@@ -49,6 +49,41 @@ ListNode* find_node(List *list , DataType data) {
     return NULL;
 }
 
+bool delete_node(List *list , DataType data) {
+    if (is_empty(list)) {
+        return true;
+    }
+    List *pre_list = list;
+    do {
+        if (list->data == data) {
+            pre_list->next = list->next;
+            free(list);
+            list = NULL;
+            return true;
+        }
+        pre_list = list;
+        list = list->next;
+    }while (list != NULL);
+    return true;
+}
+
+bool destroy_list(List **list) {
+    if (is_empty(*list)) {
+        free(*list);
+        *list = NULL;
+        return true;
+    }
+    List *pre_list = *list;
+    do {
+        pre_list = *list;
+        *list = (List *)(*list)->next;
+
+        free(pre_list);
+        pre_list=NULL;
+    }while (*list != NULL);
+    return true;
+}
+
 void list_show(List *list) {
     if (is_empty(list)) {
         return;

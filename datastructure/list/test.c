@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linked_list.h"
+#include "table_list.h"
 
 main() {
     List *test_list;
@@ -28,6 +29,22 @@ main() {
 
     printf("test show linked list data , end\n");
 
+    printf("\n delete node 5 ...\n");
+    delete_node(test_list , 5);
+    list_show(test_list);
 
+    printf("\n destroy list ...\n");
+    destroy_list(&test_list);
+    list_show(test_list);
+    printf("address %p\n" , test_list);
+
+    for (i=1;i<=50;i++) {
+        printf(".");
+    }
+    printf("\n table list testing ....\n");
+    
+
+    int *table_list = NULL;
+    table_list = create_table_list(num);
 
 }

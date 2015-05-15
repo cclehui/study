@@ -16,6 +16,9 @@ struct ListNode{
 List *create_list();
 bool is_empty(List *list);
 bool add_node(List **list ,ListNode *list_node );
+ListNode* find_node(List *list , DataType data);
+bool delete_node(List *list , DataType data);
+bool destroy_list(List **list);
 void list_show(List *list);
 
 #endif

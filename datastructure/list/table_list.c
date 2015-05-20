@@ -52,7 +52,7 @@ long *add_table_list(long **table_list_ptr_ptr , table_data_type value) {
         show_table_list(table_list);
         printf("22222222\n");
         exit(0);
-
+/*
         printf("size %d , %d\n" , *(table_list) , *(new_table_list));
 
         show_table_list(new_table_list);
@@ -62,6 +62,7 @@ long *add_table_list(long **table_list_ptr_ptr , table_data_type value) {
         table_list = new_table_list;
         *table_list_ptr_ptr = (long)table_list;
         printf("new ptr %d , outside %d\n" , table_list  , *table_list_ptr_ptr );
+        */
     } 
 
     long *next_value_ptr = table_list + 1 + *(table_list + 1) + 1;
@@ -87,4 +88,10 @@ void show_table_list(long *table_list) {
         //printf("tts %d\n" , i);
         printf("show data : %d \t %d \t %u \t %u\n" , *((table_data_type *)*(table_list + 2 + i)) , *(table_list + 1) , table_list , table_list + 2 + i);
     }
+}
+void test_malloc(){
+    int size = 40;sizeof(int);
+    int *t1 = (int *)malloc(size);
+    int *t2 = (int *)malloc(size);
+    printf("t1:%d \t t2:%d \t %d\n" , t1 , t2, size);
 }

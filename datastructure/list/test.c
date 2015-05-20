@@ -44,6 +44,7 @@ main() {
     printf("\n table list testing ....\n");
     
 
+    test_malloc();
     long *table_list = NULL;
     table_list = create_table_list(num);
     show_table_list(table_list);
@@ -52,5 +53,4 @@ main() {
         add_table_list(&table_list , i*3);
     }
     show_table_list(table_list);
-
 }

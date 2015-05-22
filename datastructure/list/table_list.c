@@ -39,12 +39,16 @@ long *add_table_list(long **table_list_ptr_ptr , table_data_type value) {
         //int new_list_length = *(table_list + 1);
         //
 
+        printf("only :%u \t %d\n" , table_list + 12 , *((table_data_type *)*(table_list + 11)));
         show_table_list(table_list);
         printf("111111111\n");
         
+        printf("only :%u \t %d\n" , table_list + 12 , *((table_data_type *)*(table_list + 11)));
+
         //long *new_table_list = (long *)malloc(*(table_list) * 2 + 2);
         long *new_table_list = (long *)malloc(20);
         printf("tt %u \t new:%u\n" , table_list , new_table_list);
+        printf("only :%u \t %d\n" , table_list + 12 , *((table_data_type *)*(table_list + 11)));
         //*(new_table_list) = *(table_list) * 2;
         //*(new_table_list + 1) = *(table_list + 1);
         //memcpy(new_table_list + 2 , table_list + 2 , *(table_list));
@@ -89,9 +93,10 @@ void show_table_list(long *table_list) {
         printf("show data : %d \t %d \t %u \t %u\n" , *((table_data_type *)*(table_list + 2 + i)) , *(table_list + 1) , table_list , table_list + 2 + i);
     }
 }
-void test_malloc(){
-    int size = 40;sizeof(int);
-    int *t1 = (int *)malloc(size);
+void test_malloc(int *t1){
+    int size = 40;//sizeof(int);
     int *t2 = (int *)malloc(size);
-    printf("t1:%d \t t2:%d \t %d\n" , t1 , t2, size);
+    printf("t1:%u \t t2:%u \t %d\n" , t1 , t2, sizeof(int));
+    printf("last t1 : %u \t las t2 : %u \n" , (t1 + 11) , (t2 + 10));
+    printf("last t1 : %d \t las t2 : %d \n" , *(t1 + 11) , *(t2 + 10));
 }

@@ -44,16 +44,17 @@ main() {
     printf("\n table list testing ....\n");
     
 
-    int *t = (int *)malloc(40);
-    test_malloc(t);
-    /*
+    //int *t = (int *)malloc(40);
+    //test_malloc(t);
+    
     long *table_list = NULL;
     table_list = create_table_list(num);
     show_table_list(table_list);
     printf("outside,ptr: %u\t value:%u\n" , &table_list , table_list);
     for (i=1;i<= 2*num ;i++){
-        add_table_list(&table_list , i*3);
+        add_table_list(&table_list , i*4 + i);
     }
+    printf("outside,ptr: %u\t value:%u\n" , &table_list , table_list);
+
     show_table_list(table_list);
-    */
 }

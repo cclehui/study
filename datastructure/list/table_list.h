@@ -9,7 +9,7 @@ struct Data{
 };
 typedef int table_data_type;
 long* create_table_list(int size);
-long* add_table_list(long **table_list_ptr_ptr , table_data_type value);
+void add_table_list(long **table_list_ptr_ptr , table_data_type value);
 void show_table_list(long *table_list); 
 
 void test_malloc(int *t1);

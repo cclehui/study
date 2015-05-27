@@ -9,4 +9,11 @@ typedef int bool;
 #define FALSE 0
 
 
+void show_int_array(int *data , int size) {
+    int i=0;
+    for (i=0;i<size;i++) {
+        printf("show array data %d , %d \n" , i , *(data + i));
+    }
+}
+
 #endif

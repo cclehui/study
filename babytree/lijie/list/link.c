@@ -1,5 +1,6 @@
 /* linkedlist.c */
 #include <stdlib.h>
+#include <stdio.h>
 #include "link.h"
 
 static link head = NULL;
@@ -26,10 +27,40 @@ link search(unsigned char key)
 	return NULL;
 }
 
-void insert(link p)
+void insert(link p , short sort)
 {
-	p->next = head;
-	head = p;
+	if (sort == 1)
+	{
+        /*
+        if (!head)
+        {
+            head = p;
+            head->next = NULL;
+            return;
+        }
+        */
+        
+        link *next_node = &head;
+        for (next_node = &head;*next_node ; next_node = &((*next_node)->next))
+        {
+            if ((*next_node)->item >= p->item)
+            {
+                p->next = *next_node;
+                *next_node = p;
+                return;
+            }
+        }
+
+
+        *next_node = p;
+        (*next_node)->next = NULL;
+        return;
+        
+	} else {
+	    p->next = head;
+	    head = p;
+	}
+    return;
 }
 
 void delete(link p)
@@ -66,7 +97,7 @@ void destroy(void)
 
 void push(link p)
 {
-	insert(p);
+	insert(p , 0);
 }
 
 link pop(void)

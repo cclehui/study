@@ -1,4 +1,4 @@
-/* linkedlist.c */
+/* linkedlist.c  双向链表*/
 #include <stdlib.h>
 #include "linkt.h"
 

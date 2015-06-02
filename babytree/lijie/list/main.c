@@ -5,7 +5,7 @@
 
 void print_item(link p)
 {
-	printf("%d\n", p->item); 
+	printf(" cur ptr: %d\tnext ptr: %d \t, value is :%d\n", p , p->next , p->item); 
 }
 
 int main(void)
@@ -26,7 +26,6 @@ int main(void)
 
     //有序链表
     printf(" create ordered new list , node count is %d \n" , node_count);
-    //exit(0);
 	for (i=0;i<node_count ;i++ )
 	{
 		insert(make_node((unsigned char)rand()%128) , 1);

@@ -31,15 +31,6 @@ void insert(link p , short sort)
 {
 	if (sort == 1)
 	{
-        /*
-        if (!head)
-        {
-            head = p;
-            head->next = NULL;
-            return;
-        }
-        */
-        
         link *next_node = &head;
         for (next_node = &head;*next_node ; next_node = &((*next_node)->next))
         {
@@ -51,7 +42,7 @@ void insert(link p , short sort)
             }
         }
 
-
+        //插入到链表尾部
         *next_node = p;
         (*next_node)->next = NULL;
         return;

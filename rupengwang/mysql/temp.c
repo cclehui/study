@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <winsock.h>
+#include <stdlib.h>
+//#include <winsock.h>
 #include "mysql.h"
 
 #pragma comment(lib, "libmysql.lib")

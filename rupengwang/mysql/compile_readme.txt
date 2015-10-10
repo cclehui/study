@@ -7,3 +7,10 @@ gcc -o temp.exe temp.c -IC:/Program Files/MySQL/MySQL Server 5.6/include -LC:/Pr
 gcc -o temp.exe temp.c -IC:/"Program Files"/MySQL/"MySQL Server 5.6"/include -L. -lmysql
 
 gcc -o temp.exe temp.c -IC:/"Program Files"/MySQL/"MySQL Server 5.6"/include "/MT" "/Zi" "/O2" "/Ob1" "/D" "NDEBUG" "/EHsc" "-DDBUG_OFF" 
+
+
+linux :
+mysql_config
+
+ gcc temp.c -I/usr/include/mysql  -L/usr/lib64/mysql -lmysqlclient -lz -lcrypt
+ -lnsl -lm -lssl -lcrypto

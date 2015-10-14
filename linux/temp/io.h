@@ -6,4 +6,6 @@
 int myOpen(char *file , int type);
 int myCopy(int s_fd , int d_fd);
 
+void showUsage(int argc, char *argv[], char *usage);
+
 #endif

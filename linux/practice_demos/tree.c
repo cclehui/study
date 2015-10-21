@@ -30,6 +30,16 @@ void putcharRepeat(char ch, int num) {
 }
 /*}}}*/
 
+//max
+/*{{{*/
+    int max(int x, int y) {
+        if (x > y) {
+            return x;
+        }
+
+        return y;
+    }
+/*}}}*/
 
 int isDir(char *path) {
     struct stat buff;
@@ -41,6 +51,7 @@ int isDir(char *path) {
     return 0;
 }
 
+static char suffix[] = {'/', '\0'};
 void myTree(char *path, int level) {
 
     if (level > 5) {
@@ -52,14 +63,23 @@ void myTree(char *path, int level) {
 
     if (isDir(path) == 1) {
         int pathLength = strlen(path);
-        if (*(path + pathLength - 1) != '/') {
-            path = strcat(path, "/");
-            pathLength++;
-        }
-
         DIR *dir;
         struct dirent *ptr;
         char *tempPath = NULL;
+        int tempPathSize = 0;
+        int pathIsNew = 0;
+
+        if (*(path + pathLength - 1) != '/') {
+            tempPath = malloc(pathLength + 2);
+            memcpy(tempPath, path, pathLength);
+            memcpy(tempPath + pathLength, suffix, 2);
+            path = tempPath;
+
+            tempPath = NULL;
+            pathLength++;
+            pathIsNew = 1;
+        }
+
         dir = opendir(path);
 
 
@@ -69,24 +89,35 @@ void myTree(char *path, int level) {
                 continue;
             }
 
-            putcharRepeat(flagChar, level);
-            printf("%s%s\n", path, ptr->d_name);
-
-            tempPath = malloc(pathLength + strlen(ptr->d_name) + 1);
+            if ((pathLength + strlen(ptr->d_name) + 1) > tempPathSize) {
+                if (tempPath != NULL) {
+                    free(tempPath);
+                }
+                tempPathSize = pathLength + strlen(ptr->d_name) + 1;
+                tempPath = malloc(pathLength + strlen(ptr->d_name) + 1);
+            }
 
             memcpy(tempPath, path, pathLength);
             memcpy(tempPath + pathLength, ptr->d_name, strlen(ptr->d_name) + 1);
 
-            //printf("=========> %s \n%d\n", tempPath, pathLength);
-            //return;
+            putcharRepeat(flagChar, level);
+            printf("%s\n", tempPath);
 
-            //printf("----> %s\n", tempPath);return;
+            if (isDir(tempPath) == 1) {
+                putcharRepeat(flagChar, level);
+                myTree(tempPath, level + 1);
+            } 
 
-            myTree(tempPath, level + 1);
+        }
+        
+        if (tempPath != NULL) {
             free(tempPath);
+            tempPath = NULL;
         }
 
-        tempPath = NULL;
+        if (pathIsNew == 1) {
+            free(path);
+        }
 
         closedir(dir);
     } else {

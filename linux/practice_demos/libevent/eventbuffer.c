@@ -17,6 +17,7 @@
 #include <errno.h>
 
 #define MAX_LINE 16384
+#define LISTEN_PORT 8889
 
 void do_read(evutil_socket_t fd, short events, void *arg);
 void do_write(evutil_socket_t fd, short events, void *arg);
@@ -45,8 +46,11 @@ readcb(struct bufferevent *bev, void *ctx)
     output = bufferevent_get_output(bev);
 
     while ((line = evbuffer_readln(input, &n, EVBUFFER_EOL_LF))) {
-        for (i = 0; i < n; ++i)
+        for (i = 0; i < n; ++i){
+            printf("%c", line[i]);
             line[i] = rot13_char(line[i]);
+        }
+        printf("\n");
         evbuffer_add(output, line, n);
         evbuffer_add(output, "\n", 1);
         free(line);
@@ -117,7 +121,7 @@ run(void)
 
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = 0;
-    sin.sin_port = htons(40713);
+    sin.sin_port = htons(LISTEN_PORT);
 
     listener = socket(AF_INET, SOCK_STREAM, 0);
     evutil_make_socket_nonblocking(listener);

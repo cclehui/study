@@ -1,6 +1,6 @@
 <?php
 /**
- * socket 服务端程序  
+ * socket select io模型 服务端程序  
  *  
  */
 

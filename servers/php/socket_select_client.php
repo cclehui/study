@@ -1,7 +1,7 @@
 <?php
 /**
  *  
- * socket 客户端程序  
+ * socket select io模型 客户端程序  
  *  
  */
 

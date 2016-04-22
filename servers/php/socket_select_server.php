@@ -33,6 +33,8 @@ $write_array = array();
 $connected_socket = array();
 $result_array = array();
 
+echo "listen on port:" , $port, "\n";
+
 //开始处理数据和连接
 while (1) {
     $read_array = array_merge($connected_socket, array($sock));
